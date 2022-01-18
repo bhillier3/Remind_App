@@ -1,0 +1,70 @@
+/* START GLOBALS */
+
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-size: 16px;
+  font-style: italic;
+  text-align: center;
+}
+
+/* END GLOBALS */
+/* START QUOTE COMPONENT */
+
+.quote_box {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr minmax(3fr, auto);
+  grid-template-areas: 
+    ". title bookmark"
+    "prev_arrow quote next_arrow";
+  row-gap: 1em;
+  margin: 1em 30% 0;
+  background-color: silver;
+  padding: 3px 3px 1em;
+}
+
+.title {
+  grid-area: title;
+  justify-self: center;
+  align-self: start;
+}
+
+.bookmark {
+  grid-area: bookmark;
+  justify-self: end;
+  align-self: start;
+  font-size: 16px;
+}
+
+.quote_container {
+  grid-area: quote;
+  justify-self: center;
+  align-self: center;
+}
+
+.quote {
+  margin: 0;
+}
+
+.author {
+  margin: 0;
+  font-style: normal;
+}
+
+.prev_arrow {
+  grid-area: prev_arrow;
+  justify-self: start;
+  align-self: center;
+}
+
+.next_arrow {
+  grid-area: next_arrow;
+  justify-self: end;
+  align-self: center;
+}
+
+/* END QUOTE COMPONENT */
