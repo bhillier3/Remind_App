@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Quote from './components/Quote';
+import styles from './styles.module.css';
 
 const quoteDB = [
   {
@@ -58,20 +59,22 @@ function App() {
 
   return(
     <div className="app">
-      <h1>Re-Mind App</h1>
-      <h3>let's get this app party started!</h3>
-      <Quote 
-        idnum={quote.id}
-        title={quote.title}
-        quote={quote.quote}
-        author={quote.author}
-        handleQuotePrevClick={handleQuotePrevClick}
-        handleQuoteNextClick={handleQuoteNextClick}
-        handleBookmarkClick={handleBookmarkClick}
-      />
-      <button onClick={() => navigate("/bookmarks", {state: bookmarks})}>
-        View Bookmarks
-      </button>
+      <div className={styles.quote_bookmark_cont}>
+        <button
+          className={styles.view_bookmarks}
+          onClick={() => navigate("/bookmarks", {state: bookmarks})}>
+          View Bookmarks
+        </button>
+        <Quote 
+          idnum={quote.id}
+          title={quote.title}
+          quote={quote.quote}
+          author={quote.author}
+          handleQuotePrevClick={handleQuotePrevClick}
+          handleQuoteNextClick={handleQuoteNextClick}
+          handleBookmarkClick={handleBookmarkClick}
+        />
+      </div>
       <h2>Looking for something specific? Let's find it!</h2>
     </div>
   );

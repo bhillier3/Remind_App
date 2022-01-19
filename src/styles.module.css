@@ -1,4 +1,7 @@
 /* START GLOBALS */
+html, body {
+  margin: 0;
+}
 
 h2 {
   margin: 0;
@@ -15,9 +18,25 @@ a {
 }
 
 /* END GLOBALS */
+
+.quote_bookmark_cont {
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 2fr) 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: ". quote_box view_bookmarks";
+}
+
+.view_bookmarks {
+  grid-area: view_bookmarks;
+  justify-self: end;
+  align-self: start;
+  font-size: 16px;
+}
+
 /* START QUOTE COMPONENT */
 
 .quote_box {
+  grid-area: quote_box;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr minmax(100px, auto);
@@ -25,9 +44,9 @@ a {
     ". title bookmark"
     "prev_arrow quote next_arrow";
   row-gap: 1em;
-  margin: 1em 30% 0;
+  align-items: center;
   background-color: silver;
-  padding: 3px 3px 1em;
+  padding: 5px 5px 1em;
 }
 
 .title {
@@ -45,6 +64,7 @@ a {
 
 .quote_container {
   grid-area: quote;
+  /* align-self: center; */
 }
 
 .quote {
@@ -54,7 +74,7 @@ a {
 }
 
 .author {
-  margin: 0;
+  margin: 0.3em 0 0;
   font-style: normal;
   text-align: center;
 }
@@ -62,13 +82,47 @@ a {
 .prev_arrow {
   grid-area: prev_arrow;
   justify-self: start;
-  align-self: center;
+  /* align-self: center; */
 }
 
 .next_arrow {
   grid-area: next_arrow;
   justify-self: end;
-  align-self: center;
+  /* align-self: center; */
 }
 
 /* END QUOTE COMPONENT */
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  .quote_bookmark_cont {
+    display: block;
+    width: 100%;
+  }
+
+  .view_bookmarks {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .quote_bookmark_cont {
+    display: block;
+    height: 100vh;
+  }
+
+  .view_bookmarks {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+  }
+
+  .quote_box {
+    height: 100%;
+    background-color: white;
+    grid-template-rows: 1fr 9fr;
+    row-gap: 0;
+    align-items: center;
+  }
+}
