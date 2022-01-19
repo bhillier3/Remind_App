@@ -5,8 +5,11 @@ const Quote = (props) => {
 
   return (
     <div className={styles.quote_box}>
-      <h2 className={styles.title}>Quote #{props.idnum}:</h2>
-      <button className={styles.bookmark}>Bookmark</button>
+      <h2 className={styles.title}>{props.title}</h2>
+      <button
+        className={styles.bookmark}
+        onClick={props.handleBookmarkClick}
+      >Bookmark</button>
       <div className={styles.quote_container}>
         <p className={styles.quote}>"{props.quote}"</p>
         <p className={styles.author}>-{props.author}</p>
